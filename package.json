@@ -1,0 +1,50 @@
+{
+  "name": "talkmatcher",
+  "version": "1.0.1",
+  "description": "A voice-only chatroulette-like app",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "suphtmlminifier": "html-minifier src/client/index.html -o public/index.html --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --use-short-doctype --minify-css true --minify-js true",
+    "buildpub": "webpack --config webpack.pub.config.js && npm run suphtmlminifier  && workbox injectManifest workbox-config.js",
+    "buildnode": "webpack --config webpack.node.config.js",
+    "update": "npm update && npm update -g && workbox copyLibraries public/third_party/",
+    "start": "systemctl start talkmatcher",
+    "restart": "systemctl restart talkmatcher",
+    "stop": "systemctl stop talkmatcher",
+    "logs": "journalctl -e -u talkmatcher.service",
+    "restartSystemd": "systemctl daemon-reload"
+  },
+  "keywords": [
+    "talk",
+    "matcher"
+  ],
+  "author": "helder esteves",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "compression": "^1.7.3",
+    "express": "^4.16.4",
+    "express-rate-limit": "^3.3.2",
+    "hark": "^1.2.3",
+    "normalize.css": "^8.0.1",
+    "sizeof": "^1.0.0",
+    "socket.io": "^2.2.0",
+    "uglifycss": "0.0.29",
+    "uniqid": "^5.0.3",
+    "webrtc-adapter": "^7.2.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-node-externals": "^1.7.2",
+    "workbox-cli": "^3.6.3"
+  }
+}

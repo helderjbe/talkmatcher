@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TalkMatcher - Anonymous & Secure Voice Chat</title>
+  <meta name="description" content="Find friends online all over the world using only your voice. Anonymous & secure voice chat with strangers. No sign up required, simply join 1 on 1 or a group with a click!">
+  <meta name="google-site-verification" content="VBqelC6UkkINVdF_x8DbbX1onLyRvVM3znTAhA309Wc" />
+  <meta name="msvalidate.01" content="41CE57FABF82DCE7B6DC10C37FDBEF7B" />
+  <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/vnd.microsoft.icon">
+  <link rel="stylesheet" href="css/vendors.css" type="text/css">
+  <link rel="stylesheet" href="css/main.css" type="text/css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#222222" />
+  <!-- Service worker -->
+  <script>"serviceWorker"in navigator&&navigator.serviceWorker.register("/sw.js");</script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-51532447-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-51532447-2');
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TQD6F8L');</script>
+  <!-- End Google Tag Manager -->
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <table>
+        <tr>
+          <td><img id="muteAll" src="assets/icons/microphone-all.svg" alt="Mute mic all"></td>
+          <td><label for="username">Display name</label><input type="text" id="username" placeholder="[ TYPE SOMETHING ]" autofocus></td>
+          <td><img id="muteFx" src="assets/icons/note.svg" alt="Mute Fx"></td></td>
+        </tr>
+      </table>
+    </header>
+
+    <div id="match">
+      <div id="log" class="blue">I want to talk with a</div>
+      <table id="pair">
+        <tr>
+          <td><button class='btn0'>User <span class='btn0'>(1 vs 1)</span></button></td>
+          <td><button class='btn1'>Group <span class='btn1'>(1 vs 2)</span></button></td>
+        </tr>
+      </table>
+    </div>
+    
+    <div id="elements"></div>
+
+    <footer>
+      <div id="loader" class="hide">Searching...</div>
+      <button id="stop" class="hide">Stop</button>
+    </footer>
+  </div>
+
+  <template id="userElement">
+    <audio autoplay></audio>
+    <div>
+      # <span class="user"></span>
+      <table><tr>
+        <td><img class="speaker" src="assets/icons/volume-up.svg" alt="Mute speaker specific"></td> 
+        <td><input class="volume" type="range" min="0" max="1" step="0.05" value="1" /></td>
+        <td><img class="mute" src="assets/icons/microphone.svg" alt="Mute mic Specific"></td>
+      </tr></table>
+    </div>
+  </template>
+
+  <script type="text/javascript" src="js/vendors.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>
